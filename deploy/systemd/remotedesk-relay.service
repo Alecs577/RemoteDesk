@@ -1,0 +1,40 @@
+[Unit]
+Description=RemoteDesk TLS relay
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=remotedesk
+Group=remotedesk
+EnvironmentFile=/etc/remotedesk/relay.env
+WorkingDirectory=/opt/remotedesk
+ExecStart=/opt/remotedesk/venv/bin/python -m remotedesk relay --host ${RELAY_HOST} --port ${RELAY_PORT} --certfile ${RELAY_CERTFILE} --keyfile ${RELAY_KEYFILE} --owners-file ${RELAY_OWNERS_FILE} --max-clients ${RELAY_MAX_CLIENTS} --log-level ${RELAY_LOG_LEVEL}
+Restart=on-failure
+RestartSec=3s
+TimeoutStopSec=15s
+KillSignal=SIGTERM
+KillMode=control-group
+UMask=0077
+LimitNOFILE=8192
+StateDirectory=remotedesk
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target

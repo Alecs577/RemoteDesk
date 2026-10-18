@@ -1,0 +1,8 @@
+include README.md
+include docs/security-deployment.md
+recursive-include docs *.md
+recursive-include legal *
+recursive-include requirements *.lock
+recursive-include deploy *
+recursive-include scripts *.ps1
+recursive-include scripts *.py

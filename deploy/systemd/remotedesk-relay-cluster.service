@@ -1,0 +1,31 @@
+[Unit]
+Description=RemoteDesk PostgreSQL active/standby TLS relay
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=remotedesk
+Group=remotedesk
+EnvironmentFile=/etc/remotedesk/cluster.env
+WorkingDirectory=/opt/remotedesk
+ExecStart=/opt/remotedesk/venv/bin/python -m remotedesk relay --cluster --host ${RELAY_HOST} --port ${RELAY_PORT} --certfile ${RELAY_CERTFILE} --keyfile ${RELAY_KEYFILE} --max-clients ${RELAY_MAX_CLIENTS}
+Restart=on-failure
+RestartSec=3s
+TimeoutStopSec=20s
+UMask=0077
+LimitNOFILE=8192
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

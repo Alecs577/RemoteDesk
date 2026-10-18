@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e5f4fb">
+  <title>RemoteDesk — Stile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="style-top">
+    <a class="mark" href="index.html">RemoteDesk<small>Stile</small></a>
+    <a class="btn btn-primary" href="index.html">Apri la scrivania</a>
+  </header>
+
+  <div class="style-wrap">
+    <p class="eyebrow">Bianco e celeste</p>
+    <h1>La scrivania sta sulla luce, non su una scheda.</h1>
+    <p class="lede">Carta bianca per targa, moduli e chat. Il campo dietro è un gradiente da bianco a celeste. La laguna è solo il gesto: Connetti, Accetta, Invita.</p>
+  </div>
+
+  <section class="swatches" aria-label="Colori">
+    <div class="swatch swatch-paper"><span>Carta</span><code>#ffffff</code></div>
+    <div class="swatch swatch-brina"><span>Brina</span><code>#f4fbfe</code></div>
+    <div class="swatch swatch-aria"><span>Aria</span><code>#e5f4fb</code></div>
+    <div class="swatch swatch-vela"><span>Vela</span><code>#c9e7f6</code></div>
+    <div class="swatch swatch-celeste"><span>Celeste</span><code>#8ecae6</code></div>
+    <div class="swatch swatch-laguna"><span>Laguna</span><code>#176184</code></div>
+  </section>
+
+  <div class="style-wrap">
+    <section class="specimen">
+      <h2>Carattere</h2>
+      <div class="type-row"><span>Outfit 500</span><strong class="type-name">Sala contratti</strong></div>
+      <div class="type-row"><span>Plex Mono</span><strong class="type-id">482 915 037</strong></div>
+      <div class="type-row"><span>Testo 17</span><p style="margin:0">Nove cifre identificano la scrivania. Lo schermo esce solo dopo Accetta.</p></div>
+    </section>
+
+    <section class="specimen">
+      <h2>Pezzi</h2>
+      <div class="kit">
+        <article class="panel">
+          <p class="plate-kicker">ID di questa scrivania</p>
+          <p class="digits" aria-hidden="true"><span>482</span><span>915</span><span>037</span></p>
+          <div class="row-actions" style="margin-top:16px">
+            <button type="button" class="btn btn-primary">Accetta</button>
+            <button type="button" class="btn btn-ghost">Rifiuta</button>
+            <button type="button" class="btn btn-danger">Interrompi</button>
+          </div>
+        </article>
+        <article class="panel">
+          <label class="lbl" for="style-id">ID della scrivania</label>
+          <input class="mono-input" id="style-id" value="109284657" readonly>
+          <p class="help">Campo bianco, bordo aria, cifre monospazio.</p>
+          <article class="incoming" style="margin-top:16px">
+            <div>
+              <p class="tag">In arrivo</p>
+              <p class="who">Marco Bellini</p>
+              <p class="who-id">109 284 657</p>
+            </div>
+            <span class="lamp" aria-hidden="true"></span>
+          </article>
+        </article>
+      </div>
+      <div class="banner" style="margin-top:16px">
+        <div>
+          <p>RemoteDesk sta condividendo questo schermo</p>
+          <p class="hint">La fascia di avviso è inchiostro, il buio della stessa famiglia, e resta sopra la sessione.</p>
+        </div>
+        <button type="button" class="btn btn-danger">Interrompi</button>
+      </div>
+    </section>
+
+    <section class="specimen">
+      <h2>Impaginazione</h2>
+      <p class="lede">Guida bianca a sinistra, 232px. Il resto è il campo. In sessione il campo si divide: schermo largo, chat stretta.</p>
+      <div class="frame" aria-hidden="true">
+        <div class="frame-rail">Guida<br>232</div>
+        <div class="frame-main">
+          <div class="frame-plate">Targa dell’ID</div>
+          <div class="frame-split">
+            <div>Schermo</div>
+            <div>Chat</div>
+          </div>
+        </div>
+      </div>
+      <p class="measure">Raggio 18px sulle lastre, 8px sui pulsanti. Un lume rotondo, celeste, dice se la scrivania è in attesa o in condivisione.</p>
+    </section>
+  </div>
+</body>
+</html>

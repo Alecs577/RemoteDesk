@@ -1,0 +1,17 @@
+{
+  "client": {
+    "relay": "relay.remotedesk.example.invalid:8770",
+    "accounts_url": "https://accounts.remotedesk.example.invalid:8771",
+    "updates_url": "https://updates.remotedesk.example.invalid/manifest.json",
+    "update_public_key": "",
+    "publisher": "RemoteDesk Demo — dati dimostrativi",
+    "support_url": "https://remotedesk.example.invalid/support",
+    "privacy_url": "https://remotedesk.example.invalid/privacy",
+    "terms_url": "https://remotedesk.example.invalid/terms"
+  },
+  "release": {
+    "legal_reviewed": false,
+    "independent_audit_completed": false,
+    "windows_acceptance_completed": false
+  }
+}

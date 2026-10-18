@@ -1,0 +1,9 @@
+# Static update manifests and already signed executables, served on HTTPS 443.
+# Replace the domain. Caddy provisions/renews its own certificate when DNS and ports work.
+updates.example.invalid {
+    root * /srv/remotedesk/releases
+    file_server
+    header /manifest.json Cache-Control "no-store"
+    header X-Content-Type-Options "nosniff"
+    header Strict-Transport-Security "max-age=31536000"
+}

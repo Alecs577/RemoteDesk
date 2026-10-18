@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RemoteDesk — la scrivania si chiama per numero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <div class="shell">
+    <div class="plate-wrap" id="numero">
+      <section class="plate" data-ui aria-label="Targa della scrivania">
+        <p class="plate-name">RemoteDesk</p>
+        <form class="digits" id="digit-form" autocomplete="off">
+          <div class="digit-row" role="group" aria-label="ID di nove cifre">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 1" value="4">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 2" value="8">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 3" value="2">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 4" value="9">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 5" value="1">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 6" value="5">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 7" value="0">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 8" value="3">
+            <input class="digit" inputmode="numeric" maxlength="1" aria-label="Cifra 9" value="7">
+          </div>
+        </form>
+        <p class="plate-status" id="plate-status">Esempio pronto da chiamare. Non è un ID assegnato.</p>
+        <p class="plate-wait">In attesa di Accetta</p>
+      </section>
+    </div>
+
+    <div class="read">
+      <header class="top">
+        <nav class="nav" aria-label="Sezioni">
+          <details class="nav-more">
+            <summary>Pagine</summary>
+            <a href="#chiamata">Chiamata</a>
+            <a href="#sessione">Sessione</a>
+            <a href="#banner">Banner</a>
+          </details>
+          <a class="nav-wide" href="#chiamata">Chiamata</a>
+          <a class="nav-wide" href="#sessione">Sessione</a>
+          <a class="nav-wide" href="#banner">Banner</a>
+          <a class="nav-wide" href="#numero">Numero</a>
+          <a class="action" href="#chiama">Chiama</a>
+        </nav>
+        <p class="lead reveal">Il numero della scrivania, non l’indirizzo di casa.</p>
+        <h1 class="wordmark">remotedesk</h1>
+      </header>
+
+      <section class="itinerary" id="chiamata">
+        <div class="itinerary-copy">
+          <h2 class="reveal">Un ordine<br>preciso</h2>
+          <p class="reveal">Leggi le nove cifre sulla targa, componile verso il server di incontro e aspetta. Lo schermo non esce finché qualcuno, su quel PC, preme Accetta.</p>
+        </div>
+        <figure class="world reveal">
+          <img src="../assets/wac-telephone-operators-operate-the-victory-switchboard.jpg" width="1920" height="2459" alt="Operatrici in fila a un centralino, ciascuna con la cuffia e una spina in mano, nel 1945.">
+          <figcaption>Centralino della conferenza di Potsdam, 1945. Dominio pubblico, U.S. National Archives. È il mestiere di collegare un numero, non una schermata di RemoteDesk.</figcaption>
+        </figure>
+        <article class="slip reveal" aria-label="Ordine della chiamata">
+          <h3>All’avvio</h3>
+          <p class="slip-row"><span>Il PC mostra il suo ID</span><span class="leaders" aria-hidden="true"></span><span>9 cifre</span></p>
+          <p class="slip-row"><span>Il relay ascolta in uscita</span><span class="leaders" aria-hidden="true"></span><span>porta 8770</span></p>
+          <h3>Alla composizione</h3>
+          <p class="slip-row"><span>L’altro PC scrive l’ID</span><span class="leaders" aria-hidden="true"></span><span>una chiamata</span></p>
+          <p class="slip-row"><span>La richiesta arriva qui</span><span class="leaders" aria-hidden="true"></span><span>in attesa</span></p>
+          <h3>Al consenso</h3>
+          <p class="slip-row"><span>Qualcuno preme Accetta</span><span class="leaders" aria-hidden="true"></span><span>su questo PC</span></p>
+          <p class="slip-row"><span>Il banner resta sopra</span><span class="leaders" aria-hidden="true"></span><span>sempre</span></p>
+          <p class="slip-end"><span>Lo schermo è condiviso</span><span>finché interrompi</span></p>
+        </article>
+      </section>
+
+      <section class="outputs" id="sessione">
+        <div class="output-names reveal" role="tablist" aria-label="Cosa produce una sessione">
+          <button type="button" role="tab" id="tab-schermo" aria-controls="sheet-schermo" aria-selected="true">Schermo</button>
+          <button type="button" role="tab" id="tab-chat" aria-controls="sheet-chat" aria-selected="false">Chat</button>
+          <button type="button" role="tab" id="tab-file" aria-controls="sheet-file" aria-selected="false">File</button>
+          <button type="button" role="tab" id="tab-appunti" aria-controls="sheet-appunti" aria-selected="false">Appunti</button>
+        </div>
+        <div class="stage reveal">
+          <article class="sheet is-on" id="sheet-schermo" role="tabpanel" aria-labelledby="tab-schermo" data-ui>
+            <header class="sheet-bar"><span>RemoteDesk</span><span>482 915 037</span></header>
+            <div class="letter">
+              <p class="letter-place">Finestra sul desktop remoto</p>
+              <h3>Lettera aperta</h3>
+              <p>Marco, il documento è sul desktop, seconda riga della cartella Contratti. Non chiudere la finestra: chi è collegato la sta leggendo con te.</p>
+              <p>Sala 2, oggi alle 16. Porta la copia firmata.</p>
+            </div>
+          </article>
+          <article class="sheet" id="sheet-chat" role="tabpanel" aria-labelledby="tab-chat" hidden data-ui>
+            <header class="sheet-bar"><span>Chat di sessione</span><span>oggi</span></header>
+            <div class="thread">
+              <p><strong>482 915 037</strong> Apro il contratto sul desktop.</p>
+              <p><strong>Questa scrivania</strong> Resta sulla seconda pagina.</p>
+              <p><strong>482 915 037</strong> La vedo. Dimmi se la data è giusta.</p>
+            </div>
+          </article>
+          <article class="sheet sheet-narrow" id="sheet-file" role="tabpanel" aria-labelledby="tab-file" hidden data-ui>
+            <header class="sheet-bar"><span>File in arrivo</span><span>esempio</span></header>
+            <dl class="receipt">
+              <div><dt>Nome</dt><dd>relazione.pdf</dd></div>
+              <div><dt>Dimensione</dt><dd>240 KB</dd></div>
+              <div><dt>Da</dt><dd>482 915 037</dd></div>
+              <div><dt>Stato</dt><dd>In attesa di accettazione</dd></div>
+            </dl>
+            <p class="receipt-note">Il file si salva in Download solo se questa scrivania accetta.</p>
+          </article>
+          <article class="sheet" id="sheet-appunti" role="tabpanel" aria-labelledby="tab-appunti" hidden data-ui>
+            <header class="sheet-bar"><span>Appunti</span><span>un invio</span></header>
+            <p class="clip">Riunione alle 16, sala 2. Porta la copia firmata del contratto.</p>
+            <p class="receipt-note">Il testo parte solo quando qualcuno preme Invia appunti. Non c’è un flusso continuo.</p>
+          </article>
+        </div>
+      </section>
+      </div>
+    </div>
+
+    <figure class="world-band reveal">
+      <div class="film">
+        <img class="drift" src="../assets/wisconsin-bell-telephone-company-switchboard.jpg" width="1920" height="1118" alt="Un uomo seduto a un banco pieno di jack e quadranti, in un centralino del 1930.">
+      </div>
+      <figcaption>Centralino della Wisconsin Bell, Milwaukee, 1930. Fotografia di Gary Langebartels / FortepanIowa, CC BY-SA 4.0, via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <figure class="world-band world-band-short reveal">
+      <img src="../assets/photograph-of-women-working-at-a-bell.jpg" width="1920" height="1525" alt="Donne al lavoro su un centralino Bell, con file di spine e cavi." loading="lazy">
+      <figcaption>Centralino Bell System. U.S. National Archives, nessuna restrizione di copyright nota. Via Wikimedia Commons.</figcaption>
+    </figure>
+
+    <figure class="world-pair reveal">
+      <img src="../assets/female-indian-telephone-switchboard-operator-helen-of.jpg" width="1920" height="1372" alt="Un’operatrice al centralino del Many Glacier Hotel, 26 giugno 1925." loading="lazy">
+      <figcaption>Many Glacier Hotel, 26 giugno 1925. Bain News Service, dominio pubblico, via Wikimedia Commons.</figcaption>
+    </figure>
+
+  <section class="banner-band" id="banner">
+    <div class="banner-copy reveal">
+      <h2>Resta visibile</h2>
+      <p id="nota">Per tutta la sessione un avviso resta sopra le altre finestre. Interrompi ferma subito mouse, tastiera e immagini. Niente esce da questo PC prima di Accetta.</p>
+    </div>
+    <div class="banner-ui reveal" data-ui>
+      <p id="banner-line">RemoteDesk sta condividendo questo schermo</p>
+      <button type="button" id="stop-demo">Interrompi</button>
+    </div>
+  </section>
+
+  <section class="cta" id="chiama">
+    <div class="cta-copy reveal">
+      <h2>Chiama una<br>scrivania</h2>
+      <p>Il pulsante prepara la chiamata con il numero sulla targa. Sull’altro PC qualcuno deve ancora premere Accetta.</p>
+    </div>
+    <form class="dialog reveal" data-ui id="call-form">
+      <h3>Nuova chiamata</h3>
+      <label for="server">Server di incontro</label>
+      <input id="server" name="server" value="203.0.113.10:8770" autocomplete="off">
+      <label for="call-id">ID della scrivania</label>
+      <input id="call-id" name="id" value="482915037" inputmode="numeric" autocomplete="off" maxlength="9">
+      <div class="segment" role="group" aria-label="Ruolo">
+        <button type="button" class="seg is-on" data-role="host">Questo PC</button>
+        <button type="button" class="seg" data-role="guest">Connetti</button>
+      </div>
+      <button class="action action-block" type="submit">Prepara la chiamata</button>
+      <p class="call-result" id="call-result">Sul PC che condividi, la targa mostra nove cifre. Qui le componi.</p>
+    </form>
+  </section>
+
+  <div class="rest" aria-hidden="true"></div>
+
+  <footer class="colophon">
+    <p>Scrivania chiamata per ID</p>
+    <p class="colophon-links">
+      <a href="#numero">Numero</a>
+      <a href="#chiamata">Chiamata</a>
+      <a href="#sessione">Sessione</a>
+      <a href="#nota">Riservatezza</a>
+    </p>
+    <p>2026</p>
+  </footer>
+  <p class="credits">Fotografie di centralini storici, non del prodotto. Potsdam, 1945, dominio pubblico, U.S. National Archives. Wisconsin Bell, 1930, Gary Langebartels / FortepanIowa, CC BY-SA 4.0. Centralino Bell, U.S. National Archives. Many Glacier Hotel, 1925, Bain News Service, dominio pubblico. Tutte via Wikimedia Commons.</p>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

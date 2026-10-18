@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e5f4fb">
+  <title>RemoteDesk — Scrivania</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <a class="skip" href="#contenuto">Vai al contenuto</a>
+  <div class="app">
+    <aside class="rail">
+      <a class="mark" href="#scrivania">RemoteDesk<small>0.1.0</small></a>
+      <nav class="nav" aria-label="Scrivania">
+        <button type="button" data-nav="scrivania">Scrivania</button>
+        <button type="button" data-nav="chiamata">Chiamata</button>
+        <button type="button" data-nav="sessione">Sessione</button>
+        <button type="button" data-nav="contatti">Contatti</button>
+        <button type="button" data-nav="impostazioni">Impostazioni</button>
+        <a href="stile.html">Stile</a>
+      </nav>
+      <p class="rail-foot"><span class="lamp" id="lamp" aria-hidden="true"></span><span id="rail-state">In attesa</span></p>
+    </aside>
+
+    <main class="main" id="contenuto">
+      <div class="banner" id="banner" hidden>
+        <div>
+          <p>RemoteDesk sta condividendo questo schermo</p>
+          <p class="hint">Anteprima di layout. Questo browser non invia lo schermo.</p>
+        </div>
+        <button type="button" class="btn btn-danger" id="stop-share">Interrompi</button>
+      </div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="eyebrow">Questo PC</p>
+          <h1 id="title">Sala contratti</h1>
+        </div>
+        <p class="pill"><span class="lamp" aria-hidden="true"></span><span id="relay-pill">203.0.113.10:8770</span></p>
+      </header>
+      <p class="flash" id="flash" role="status"></p>
+
+      <section data-view="scrivania">
+        <article class="plate">
+          <div>
+            <p class="plate-kicker">ID di questa scrivania</p>
+            <p class="digits" id="desk-digits" aria-label="482915037"><span>482</span><span>915</span><span>037</span></p>
+          </div>
+          <div class="plate-actions">
+            <button type="button" class="btn btn-ghost" id="copy-id">Copia</button>
+            <button type="button" class="btn btn-primary" id="open-invite">Invita</button>
+          </div>
+          <p class="plate-note">Condividi queste nove cifre. Lo schermo, i file e gli appunti non escono da questo PC prima di Accetta.</p>
+        </article>
+
+        <div class="facts">
+          <article>
+            <h2>Relay</h2>
+            <p class="fact" id="fact-relay">203.0.113.10:8770</p>
+            <p class="fact-help" id="fact-relay-help">Porta 8770, in ascolto per l’incontro.</p>
+          </article>
+          <article>
+            <h2>Impronta</h2>
+            <p class="fact" id="fact-fp">4f:a1:9c:22:b7:e0:18:d3</p>
+            <p class="fact-help">Certificato di questa scrivania. Si confronta a ogni collegamento.</p>
+          </article>
+          <article>
+            <h2>Accesso</h2>
+            <p class="fact" id="fact-access">Chiedi sempre</p>
+            <p class="fact-help">Senza password ogni chiamata resta in attesa di Accetta.</p>
+          </article>
+        </div>
+
+        <div class="block">
+          <div class="block-head">
+            <h2>In arrivo</h2>
+          </div>
+          <p class="empty" id="incoming-empty" hidden>Nessuna richiesta. Il numero resta in attesa.</p>
+          <article class="incoming" id="incoming-card">
+            <div>
+              <p class="tag">Esempio di richiesta</p>
+              <p class="who" id="incoming-alias">Marco Bellini</p>
+              <p class="who-id" id="incoming-id">109 284 657</p>
+              <p class="fine">Non arriva dalla rete. Serve a vedere il consenso, con i permessi, prima della sessione.</p>
+            </div>
+            <div class="row-actions">
+              <button type="button" class="btn btn-primary" id="accept-incoming">Accetta</button>
+              <button type="button" class="btn btn-ghost" id="refuse-incoming">Rifiuta</button>
+            </div>
+          </article>
+          <p class="fine" id="invite-note" hidden></p>
+        </div>
+      </section>
+
+      <section data-view="chiamata" hidden>
+        <div class="call">
+          <form class="panel" id="call-form">
+            <h2>Nuova chiamata</h2>
+            <label class="lbl" for="call-id">ID della scrivania</label>
+            <input class="mono-input" id="call-id" name="id" inputmode="numeric" maxlength="9" autocomplete="off" placeholder="109284657">
+            <label class="lbl" for="call-password">Password</label>
+            <input id="call-password" name="password" type="password" autocomplete="off">
+            <p class="help">Se quel PC non ha una password, lascia il campo vuoto. La chiamata parte solo dopo Accetta.</p>
+            <p class="error" id="call-error" hidden></p>
+            <div class="dialog-actions">
+              <button class="btn btn-primary" type="submit">Connetti</button>
+            </div>
+          </form>
+          <div class="pick">
+            <h2>Dalla rubrica</h2>
+            <div id="call-contacts"></div>
+          </div>
+        </div>
+      </section>
+
+      <section data-view="sessione" hidden>
+        <div id="session-idle" class="wait-block">
+          <h2>Nessuna sessione</h2>
+          <p>Componi un ID oppure accetta una richiesta sulla scrivania. Finché non c’è Accetta, il campo dello schermo resta chiuso.</p>
+          <a class="btn btn-primary" href="#chiamata">Apri la chiamata</a>
+        </div>
+
+        <div id="session-guest" class="session" hidden>
+          <div class="well">
+            <article class="wait-card">
+              <header><span>Chiamata in uscita</span><span>in attesa</span></header>
+              <div class="wait-body">
+                <p class="plate-kicker">In attesa di Accetta</p>
+                <p class="digits" id="guest-digits"><span>109</span><span>284</span><span>657</span></p>
+                <p class="fine" id="guest-alias">Marco Bellini</p>
+              </div>
+            </article>
+          </div>
+          <aside class="panel side">
+            <h2>Quel PC decide</h2>
+            <p class="help">I permessi li sceglie chi riceve la chiamata. Da questa pagina la chiamata non esce verso il relay.</p>
+            <div class="dialog-actions">
+              <button type="button" class="btn btn-danger" id="cancel-call">Annulla</button>
+            </div>
+          </aside>
+        </div>
+
+        <div id="session-host" class="session" hidden>
+          <div class="well">
+            <article class="desktop">
+              <header class="deskbar"><span>Quello che vede chi si collega</span><span>questa scrivania</span></header>
+              <div class="letter">
+                <p class="plate-kicker">Desktop</p>
+                <h3 class="doc-title">Contratti</h3>
+                <p>Il documento è sulla seconda riga della cartella. Resta aperto: chi è collegato lo sta leggendo con te.</p>
+                <p>Sala 2, oggi alle 16.</p>
+              </div>
+            </article>
+          </div>
+          <aside class="panel side">
+            <h2>Chat</h2>
+            <div class="thread" id="thread" aria-live="polite"></div>
+            <form class="composer" id="chat-form">
+              <label class="skip" for="chat-text">Messaggio</label>
+              <input id="chat-text" type="text" maxlength="500" autocomplete="off" placeholder="Scrivi alla sessione">
+              <button class="btn btn-primary" type="submit">Invia</button>
+            </form>
+            <div class="inline-actions" style="margin-top:8px">
+              <button type="button" class="btn btn-ghost btn-small" id="send-clip">Invia appunti</button>
+              <button type="button" class="btn btn-ghost btn-small" id="send-file">Invia file</button>
+              <input id="file-pick" type="file" hidden>
+            </div>
+            <h3 style="margin-top:16px">Permessi concessi</h3>
+            <ul class="grant-list" id="grant-live"></ul>
+          </aside>
+        </div>
+      </section>
+
+      <section data-view="contatti" hidden>
+        <form class="panel add-form" id="contact-form">
+          <div>
+            <label class="lbl" for="contact-alias">Alias</label>
+            <input id="contact-alias" type="text" maxlength="40" autocomplete="off">
+          </div>
+          <div>
+            <label class="lbl" for="contact-id">ID</label>
+            <input class="mono-input" id="contact-id" type="text" inputmode="numeric" maxlength="9" autocomplete="off">
+          </div>
+          <button class="btn btn-primary" type="submit">Aggiungi</button>
+          <p class="error" id="contact-error" hidden></p>
+        </form>
+        <div class="panel sheet-list" id="contact-list" style="margin-top:14px"></div>
+      </section>
+
+      <section data-view="impostazioni" hidden>
+        <form class="settings" id="settings-form">
+          <div class="panel">
+            <h2>Questa scrivania</h2>
+            <label class="lbl" for="set-alias">Alias</label>
+            <input id="set-alias" type="text" maxlength="40" autocomplete="off">
+            <label class="lbl" for="set-relay">Server relay</label>
+            <input class="mono-input" id="set-relay" type="text" autocomplete="off" placeholder="203.0.113.10:8770">
+            <label class="lbl" for="set-password">Nuova password di accesso</label>
+            <input id="set-password" type="password" autocomplete="new-password">
+            <label class="check-line" for="set-clear-password">
+              <input id="set-clear-password" type="checkbox">
+              Togli la password e chiedi sempre Accetta
+            </label>
+            <p class="error" id="settings-error" hidden></p>
+            <div class="dialog-actions">
+              <button class="btn btn-primary" type="submit">Salva</button>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>Scrivanie fidate</h2>
+            <p class="help">L’impronta si ricorda solo dopo un collegamento vero. Qui segni gli ID a cui dai fiducia.</p>
+            <div id="trusted-list"></div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="grants" aria-labelledby="grant-title">
+    <form id="grant-form">
+      <h2 id="grant-title">Consenti la sessione</h2>
+      <p class="lead" id="grant-lead"></p>
+      <div id="grant-target-wrap" hidden>
+        <label class="lbl" for="grant-target">ID della scrivania</label>
+        <input class="mono-input" id="grant-target" inputmode="numeric" maxlength="9" autocomplete="off">
+      </div>
+      <div class="profiles" role="group" aria-label="Profilo">
+        <button type="button" class="btn btn-ghost btn-small" data-profile="default" aria-pressed="true">Predefinito</button>
+        <button type="button" class="btn btn-ghost btn-small" data-profile="view" aria-pressed="false">Solo vedere</button>
+      </div>
+      <div class="checks" id="grant-box"></div>
+      <p class="error" id="grant-error" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-primary" id="grant-confirm">Accetta</button>
+        <button type="button" class="btn btn-ghost" id="grant-cancel">Annulla</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
